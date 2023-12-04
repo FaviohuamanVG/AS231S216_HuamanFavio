@@ -1,0 +1,19 @@
+create database practica_node;
+use practica_node;
+
+CREATE TABLE formulario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombres VARCHAR(80) NOT NULL,
+    apellidos VARCHAR(90) NOT NULL,
+    eleccion_carrera VARCHAR(50) NOT NULL,
+    numero_dni CHAR(8) NOT NULL,
+    correo_institucional VARCHAR(90) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+     fecha_nacimiento VARCHAR(10) NULL,
+    CONSTRAINT chk_correo_institucional CHECK (correo_institucional REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'),
+    CONSTRAINT chk_nombres_apellidos_valido CHECK (nombres REGEXP '^[A-Za-zÀ-ÖØ-öø-ÿ ]+$' AND apellidos REGEXP '^[A-Za-zÀ-ÖØ-öø-ÿ ]+$')
+);
+
+select *from formulario;
+
+drop database practica_node;
